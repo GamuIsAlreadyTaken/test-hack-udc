@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { CheckboxFormFieldSchema } from './../processors/checkbox.processor';
-    export let data: CheckboxFormFieldSchema;
+	import type{ TextFormFieldSchema } from './../processors/text.processor';
+    export let data: TextFormFieldSchema;
 
 </script>
 

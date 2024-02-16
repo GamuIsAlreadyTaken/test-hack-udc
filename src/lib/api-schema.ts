@@ -29,8 +29,6 @@ export type GenericFormFieldSchema = {
     field_group?: string,
     field_dependent_on?: FormFieldDependencies
 
-    field_default_value?: never,
-    field_validations?: never
 }
 
 export type FormFieldDependencies = {

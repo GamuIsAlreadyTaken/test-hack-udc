@@ -1,6 +1,23 @@
 <script lang="ts">
 	import type { CheckboxFormFieldSchema } from './../lib/inputs/processors/checkbox.processor';
-	import Checkbox from './../lib/inputs/components/checkbox.svelte';
+	
+	let data: CheckboxFormFieldSchema ={
+		field_description: "",
+
+		field_id: 3,
+
+		field_type: "checkbox",
+
+		field_order: 4,
+
+		field_name: "check",
+
+		field_readonly:true,
+		
+		field_default_value:true
+	}
+
+
 
 	let field_readonly = true;
 	let field_description = "CHECK";

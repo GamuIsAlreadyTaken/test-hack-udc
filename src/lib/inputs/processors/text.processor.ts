@@ -10,6 +10,6 @@ export type TextFormFieldSchema = GenericFormFieldSchema &
     {}
 }
 
-export function parse(schema: CheckboxFormFieldSchema) {
+export function parse(schema: TextFormFieldSchema) {
     return // TODO, devolver el componente de checkbox con las configuraciones
 }

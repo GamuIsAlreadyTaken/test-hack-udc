@@ -1,0 +1,3 @@
+Arreglar:
+
+        El objeto conocido como Checkbox.svelte tiene problemas con la opcion readonly

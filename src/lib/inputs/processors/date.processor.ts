@@ -1,10 +1,11 @@
 import type { GenericFormFieldSchema } from "$lib/api-schema";
+import type { NoValidation } from "$lib/form-validations";
 
 export type DateFormFieldSchema = GenericFormFieldSchema &
 {
     field_type: 'date',
-    field_default_value: any, // TODO, especificar el valor por defecto, si es que existe
-    field_validations: any// TODO, especificar tipo de validaciones, si es que existe
+    field_default_value?: Date,
+    field_validations?: NoValidation
 }
 
 export function parse(schema: DateFormFieldSchema) {

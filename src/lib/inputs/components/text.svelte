@@ -1,8 +1,13 @@
 <script lang="ts">
-	import type { TextFormFieldSchema } from './../processors/text.processor';
-    export let data: TextFormFieldSchema;
+	import type { CheckboxFormFieldSchema } from './../processors/checkbox.processor';
+    export let data: CheckboxFormFieldSchema;
+
 </script>
 
+{#if data.field_readonly}
+<input class="textbox" type="text" readonly>
+{:else}
+<input class="textbox" type="text" >
+{/if}
 
-<input type="text">
-
+<label>{data.field_description}</label>

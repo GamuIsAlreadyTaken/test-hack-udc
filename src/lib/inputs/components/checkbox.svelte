@@ -1,15 +1,13 @@
 <script lang="ts">
-
-    export let field_readonly: boolean;
-    export let field_description: string;
-    export let field_default_value: boolean;
+	import type { CheckboxFormFieldSchema } from './../processors/checkbox.processor';
+    export let data: CheckboxFormFieldSchema;
 
 </script>
 
-{#if field_readonly}
-<input class="check" type="checkbox"  bind:checked={field_default_value} readonly>
+{#if data.field_readonly}
+<input class="check" type="checkbox"  bind:checked={data.field_default_value} readonly>
 {:else}
 <input class="check" type="checkbox" >
 {/if}
 
-<label>{field_description}</label>
+<label>{data.field_description}</label>

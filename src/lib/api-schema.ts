@@ -20,14 +20,17 @@ export type GroupSchema = {
  */
 export type GenericFormFieldSchema = {
     field_id: number,
-    field_type: FormFieldType,
     field_name: string,
+    field_type: FormFieldType,
     field_order: number,
-    field_required: boolean,
+    field_required?: boolean,
     field_description: string,
-    field_readonly: boolean,
+    field_readonly?: boolean,
     field_group?: string,
     field_dependent_on?: FormFieldDependencies
+
+    field_default_value?: never,
+    field_validations?: never
 }
 
 export type FormFieldDependencies = {
@@ -41,3 +44,4 @@ export type FormFieldType =
     'date' |
     'select' |
     'checkbox'
+

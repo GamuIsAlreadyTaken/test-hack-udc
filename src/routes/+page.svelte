@@ -8,6 +8,5 @@
 </script>
 
 <h1>Reto de disashop</h1>
-<p></p>
 
 <input type="checkbox" disabled> 

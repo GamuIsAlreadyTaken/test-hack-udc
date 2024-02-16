@@ -1,0 +1,260 @@
+{
+    "form_type_id": 1,
+    "form_type_name": "Registro de Raspberry Pi",
+    "title_field": {
+        "field_description": "Título del Modelo"
+    },
+    "form_type_description": "Este formulario permite registrar información detallada sobre diferentes modelos de Raspberry Pi.",
+    "form_groups": [
+        {
+            "group_id": "basic_info",
+            "group_name": "Información Básica",
+            "group_order": 1,
+            "group_description": "Información fundamental sobre el modelo de Raspberry Pi."
+        },
+        {
+            "group_id": "technical_specs",
+            "group_name": "Especificaciones Técnicas",
+            "group_order": 2,
+            "group_description": "Detalles técnicos específicos del modelo de Raspberry Pi."
+        },
+        {
+            "group_id": "accessories",
+            "group_name": "Accesorios",
+            "group_order": 3,
+            "group_description": "Accesorios disponibles para el modelo de Raspberry Pi."
+        }
+    ],
+    "form_fields": [
+        {
+            "field_id": 1,
+            "field_name": "Número de Serie",
+            "field_type": "text",
+            "field_order": 1,
+            "field_required": true,
+            "field_description": "Número de serie del modelo de Raspberry Pi",
+            "field_readonly": false,
+            "field_default_value": "",
+            "field_group": "basic_info",
+            "field_validations": {
+                "format": "^[A-Za-z0-9_]+$"
+            }
+        },
+        {
+            "field_id": 2,
+            "field_name": "Fecha de Compra",
+            "field_type": "date",
+            "field_order": 2,
+            "field_required": true,
+            "field_description": "Fecha en la que se adquirió el modelo de Raspberry Pi",
+            "field_readonly": false,
+            "field_default_value": "",
+            "field_group": "basic_info",
+            "field_validations": {}
+        },
+        {
+            "field_id": 3,
+            "field_name": "Nombre del Modelo",
+            "field_type": "select",
+            "field_order": 3,
+            "field_required": true,
+            "field_description": "Seleccione el modelo de Raspberry Pi",
+            "field_readonly": false,
+            "field_default_value": "",
+            "field_group": "basic_info",
+            "field_validations": {
+                "options": [
+                    "Pi 1 modelo A",
+                    "Pi 1 modelo B",
+                    "Pi 1 modelo B+",
+                    "Pi 2 modelo B",
+                    "Pi 3 modelo B",
+                    "Pi 3 modelo B+",
+                    "Pi 3 modelo A",
+                    "Pi 4 modelo B",
+                    "Pi 400",
+                    "Pi 5",
+                    "Zero",
+                    "Otro"
+                ]
+            }
+        },
+        {
+            "field_id": 4,
+            "field_name": "Modelo Personalizado",
+            "field_type": "text",
+            "field_order": 4,
+            "field_required": true,
+            "field_description": "Especifique otro modelo de Raspberry Pi",
+            "field_readonly": false,
+            "field_default_value": "",
+            "field_group": "basic_info",
+            "field_validations": {},
+            "field_dependent_on": {
+                "field_id": 3,
+                "field_value": "Otro"
+            }
+        },
+        {
+            "field_id": 5,
+            "field_name": "Descripción",
+            "field_type": "text",
+            "field_order": 5,
+            "field_required": true,
+            "field_description": "Descripción detallada del modelo de Raspberry",
+            "field_readonly": false,
+            "field_default_value": "",
+            "field_group": "basic_info",
+            "field_validations": {
+                "min_length": 10
+            }
+        },
+        {
+            "field_id": 6,
+            "field_name": "Procesador",
+            "field_type": "text",
+            "field_order": 1,
+            "field_required": true,
+            "field_description": "Tipo y velocidad del procesador",
+            "field_readonly": false,
+            "field_default_value": "",
+            "field_group": "technical_specs",
+            "field_validations": {}
+        },
+        {
+            "field_id": 7,
+            "field_name": "Memoria RAM",
+            "field_type": "number",
+            "field_order": 2,
+            "field_required": true,
+            "field_description": "Cantidad de memoria RAM en GB",
+            "field_readonly": false,
+            "field_default_value": "",
+            "field_group": "technical_specs",
+            "field_validations": {
+                "min_value": 1,
+                "max_value": 64
+            }
+        },
+        {
+            "field_id": 8,
+            "field_name": "Almacenamiento",
+            "field_type": "select",
+            "field_order": 3,
+            "field_required": true,
+            "field_description": "Capacidad de almacenamiento",
+            "field_readonly": false,
+            "field_default_value": "4GB",
+            "field_group": "technical_specs",
+            "field_validations": {
+                "options": [
+                    "1GB",
+                    "2GB",
+                    "4GB",
+                    "8GB",
+                    "16GB",
+                    "32GB",
+                    "64GB",
+                    "+64GB"
+                ]
+            }
+        },
+        {
+            "field_id": 9,
+            "field_name": "Dispones de accesorios",
+            "field_type": "select",
+            "field_order": 9,
+            "field_required": true,
+            "field_description": "Indica si tienes accesorios para tu Raspberry Pi",
+            "field_readonly": false,
+            "field_default_value": false,
+            "field_group": "accessories",
+            "field_validations": {
+                "options": [
+                    "Si",
+                    "No"
+                ]
+            }
+        },
+        {
+            "field_id": 10,
+            "field_name": "Carcasa",
+            "field_type": "boolean",
+            "field_order": 10,
+            "field_required": false,
+            "field_description": "¿Tienes una carcasa para tu Raspberry Pi?",
+            "field_readonly": false,
+            "field_default_value": false,
+            "field_group": "accessories",
+            "field_validations": {},
+            "field_dependent_on": {
+                "field_id": 9,
+                "field_value": "Si"
+            }
+        },
+        {
+            "field_id": 11,
+            "field_name": "Cargador",
+            "field_type": "boolean",
+            "field_order": 11,
+            "field_required": false,
+            "field_description": "¿Tienes un cargador para tu Raspberry Pi?",
+            "field_readonly": false,
+            "field_default_value": false,
+            "field_group": "accessories",
+            "field_validations": {},
+            "field_dependent_on": {
+                "field_id": 9,
+                "field_value": "Si"
+            }
+        },
+        {
+            "field_id": 12,
+            "field_name": "Cable HDMI",
+            "field_type": "boolean",
+            "field_order": 12,
+            "field_required": false,
+            "field_description": "¿Tienes un cable HDMI para tu Raspberry Pi?",
+            "field_readonly": false,
+            "field_default_value": false,
+            "field_group": "accessories",
+            "field_validations": {},
+            "field_dependent_on": {
+                "field_id": 9,
+                "field_value": "Si"
+            }
+        },
+        {
+            "field_id": 13,
+            "field_name": "Tarjeta SD",
+            "field_type": "boolean",
+            "field_order": 13,
+            "field_required": false,
+            "field_description": "¿Tienes una tarjeta SD para tu Raspberry Pi?",
+            "field_readonly": false,
+            "field_default_value": false,
+            "field_group": "accessories",
+            "field_validations": {},
+            "field_dependent_on": {
+                "field_id": 9,
+                "field_value": "Si"
+            }
+        },
+        {
+            "field_id": 14,
+            "field_name": "Capacidad de la tarjeta SD (GB)",
+            "field_type": "number",
+            "field_order": 14,
+            "field_required": false,
+            "field_description": "Indica la capacidad de la tarjeta SD en GB",
+            "field_readonly": false,
+            "field_default_value": false,
+            "field_group": "accessories",
+            "field_validations": {},
+            "field_dependent_on": {
+                "field_id": 13,
+                "field_value": true
+            }
+        }
+    ]
+}

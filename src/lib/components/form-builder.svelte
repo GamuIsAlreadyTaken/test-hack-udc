@@ -9,11 +9,15 @@
     } from "$lib/inputs/module";
     import type { Writable } from "svelte/store";
     import MaybeDependant from "$lib/components/maybe-dependant.svelte";
+    import { getContext, setContext } from "svelte";
 
     export let schema: FormSchema;
     export let values: Record<string, Writable<any>> = {};
     export let groupedFields: ReturnType<typeof groupElements>;
-    export let readOnly: boolean = false;
+    let readOnly = getContext<boolean>("readOnly") ?? false;
+
+    setContext("readOnly", readOnly);
+
     let groups: GroupSchema[] =
         schema.form_groups?.toSorted(orderBy("group_order")) ?? [];
 </script>
@@ -30,7 +34,6 @@
                     <MaybeDependant
                         data={field}
                         dependees={values}
-                        {readOnly}
                     />
                 {/each}
             </fieldset>

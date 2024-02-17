@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
     import type { GenericFormFieldSchema } from "$lib/types/api-schema";
     import type { NoValidation } from "$lib/types/form-validations";
+    import { getContext } from "svelte";
     import { writable, type Writable } from "svelte/store";
 
     export type CheckboxFormFieldSchema = GenericFormFieldSchema & {
@@ -13,7 +14,7 @@
 <script lang="ts">
     export let data: CheckboxFormFieldSchema;
     export let value: Writable<boolean> = writable(data.field_default_value);
-    export let readOnly: boolean = false;
+    let readOnly = getContext<boolean>("readOnly") ?? false;
 </script>
 
 <div>

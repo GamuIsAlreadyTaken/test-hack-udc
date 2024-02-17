@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
     import type { GenericFormFieldSchema } from "$lib/types/api-schema";
     import type { MaxValue, MinValue } from "$lib/types/form-validations";
+    import { getContext } from "svelte";
     import { writable, type Writable } from "svelte/store";
 
     export type NumberFormFieldSchema = GenericFormFieldSchema & {
@@ -13,7 +14,7 @@
 <script lang="ts">
     export let data: NumberFormFieldSchema;
     export let value: Writable<number> = writable(data.field_default_value);
-        export let readOnly: boolean = false;
+    let readOnly = getContext<boolean>("readOnly") ?? false;
 
     let min = (data.field_validations as MinValue).min_value;
     let max = (data.field_validations as MaxValue).max_value;

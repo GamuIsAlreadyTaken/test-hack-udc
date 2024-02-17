@@ -4,6 +4,7 @@
         AllowMultipleOptions,
         Options,
     } from "$lib/types/form-validations";
+    import { getContext } from "svelte";
     import { writable, type Writable } from "svelte/store";
 
     export type SelectFormFieldSchema = GenericFormFieldSchema & {
@@ -16,8 +17,8 @@
 <script lang="ts">
     export let data: SelectFormFieldSchema;
     export let value: Writable<string> = writable(data.field_default_value);
-    export let readOnly: boolean = false;
     let opciones = data.field_validations?.options ?? [];
+    let readOnly = getContext<boolean>('readOnly') ?? false
     let allowMultiple: boolean = (
         data.field_validations as AllowMultipleOptions
     )?.allow_multiple_options;

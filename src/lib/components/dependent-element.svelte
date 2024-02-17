@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { GenericFormFieldSchema } from "$lib/types/api-schema";
+    import { getContext } from "svelte";
     import { derived, type Writable } from "svelte/store";
 
     export let component: ConstructorOfATypedSvelteComponent;
@@ -7,7 +8,7 @@
     export let value: any;
 
     export let dependantValue: Writable<any>;
-    export let readOnly: boolean = false;
+    let readOnly = getContext<boolean>("readOnly") ?? false;
 
     const show = derived(
         [dependantValue],

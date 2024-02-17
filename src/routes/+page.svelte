@@ -1,29 +1,24 @@
 <script lang="ts">
-	import type { CheckboxFormFieldSchema } from './../lib/inputs/processors/checkbox.processor';
+	import Date from './../lib/inputs/components/date.svelte';
+    import type { DateFormFieldSchema } from '$lib/inputs/processors/date.processor';
 	
-	let data: CheckboxFormFieldSchema ={
+	let dataP: DateFormFieldSchema ={
 		field_description: "",
 
 		field_id: 3,
 
-		field_type: "checkbox",
+		field_type: "date",
 
 		field_order: 4,
 
-		field_name: "check",
+		field_name: "date",
 
 		field_readonly:true,
 		
-		field_default_value:true
+		field_default_value:null
 	}
-
-
-
-	let field_readonly = true;
-	let field_description = "CHECK";
-
-</script>
+	</script>
 
 <h1>Reto de disashop</h1>
 
-<input type="checkbox" disabled> 
+<Date data = {dataP}></Date>

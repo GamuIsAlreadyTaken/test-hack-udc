@@ -32,7 +32,7 @@ export type GenericFormFieldSchema = {
 }
 
 export type FormFieldDependencies = {
-    field_id: number,
+    field_id: string,
     field_value: any
 }
 

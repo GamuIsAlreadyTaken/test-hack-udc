@@ -4,10 +4,12 @@
 
 </script>
 
-{#if data.field_readonly}
-<input class="textbox" type="text" readonly>
-{:else}
-<input class="textbox" type="text" >
-{/if}
 
 <label>{data.field_description}</label>
+{#if data.field_readonly}
+<input class="textbox" type="text" bind:value={data.field_default_value} readonly>
+{:else}
+<input class="textbox" type="text" bind:value={data.field_default_value} >
+{/if}
+
+

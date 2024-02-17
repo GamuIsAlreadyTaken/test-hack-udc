@@ -1,29 +1,27 @@
 <script lang="ts">
+    import type { TextFormFieldSchema } from '$lib/inputs/processors/text.processor';
+	import Text from './../lib/inputs/components/text.svelte';
 	import type { CheckboxFormFieldSchema } from './../lib/inputs/processors/checkbox.processor';
 	
-	let data: CheckboxFormFieldSchema ={
-		field_description: "",
+	let data: TextFormFieldSchema ={
+		field_description: "patata",
 
 		field_id: 3,
 
-		field_type: "checkbox",
+		field_type: "text",
 
 		field_order: 4,
 
-		field_name: "check",
+		field_name: "",
 
-		field_readonly:true,
+		field_readonly:false,
 		
-		field_default_value:true
+		field_default_value:"hola"
 	}
 
 
-
-	let field_readonly = true;
-	let field_description = "CHECK";
-
 </script>
-
 <h1>Reto de disashop</h1>
 
-<input type="checkbox" disabled> 
+<Text {data}></Text>
+

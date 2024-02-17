@@ -5,7 +5,6 @@
         MaxLength,
         MinLength,
     } from "$lib/types/form-validations";
-    import { writable, type Writable } from "svelte/store";
 
     export type TextFormFieldSchema = GenericFormFieldSchema & {
         field_type: "text";
@@ -20,7 +19,6 @@
 
 <script lang="ts">
     export let data: TextFormFieldSchema;
-    export let value: Writable<string> = writable(data.field_default_value);
 
     let minlength = (data.field_validations as MinLength).min_length;
     let maxlength = (data.field_validations as MaxLength).max_length;
@@ -28,8 +26,8 @@
 </script>
 
 <label for={data.field_name}>
-    {data.field_description}
-    <div>
+    {data.field_description}<br />
+    <div class="prueba">
         <input
             name={data.field_id}
             type="text"

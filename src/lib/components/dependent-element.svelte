@@ -7,6 +7,7 @@
     export let value: any;
 
     export let dependantValue: Writable<any>;
+    export let readOnly: boolean = false;
 
     const show = derived(
         [dependantValue],
@@ -17,5 +18,5 @@
 </script>
 
 {#if $show}
-    <svelte:component this={component} key={component} {data} bind:value />
+    <svelte:component this={component} {readOnly} key={component} {data} bind:value />
 {/if}

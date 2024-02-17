@@ -43,12 +43,8 @@
             {:else}
                 {#await getFormTypeProcessedData(id)}
                     <Chargeicon />
-                {:then [form, groups, values]}
-                    <FormBuilder
-                        {form}
-                        groupedFields={groups}
-                        dependees={values}
-                    />
+                {:then [schema, groups, values]}
+                    <FormBuilder {schema} groupedFields={groups} {values} />
                 {/await}
             {/if}
         </div>

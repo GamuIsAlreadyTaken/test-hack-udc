@@ -13,6 +13,7 @@
 <script lang="ts">
     export let data: NumberFormFieldSchema;
     export let value: Writable<number> = writable(data.field_default_value);
+        export let readOnly: boolean = false;
 
     let min = (data.field_validations as MinValue).min_value;
     let max = (data.field_validations as MaxValue).max_value;
@@ -30,7 +31,7 @@
         {min}
         {max}
         required={data.field_required}
-        readonly={data.field_readonly}
+        readonly={data.field_readonly || readOnly}
     />
 </div>
 

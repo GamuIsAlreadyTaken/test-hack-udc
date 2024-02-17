@@ -10,6 +10,7 @@
     } from "$lib/types/api-schema";
     import Chargeicon from "$lib/assets/chargeicon.svelte";
     import { getFormTypeProcessedData } from "$lib/inputs/module";
+    import { error, redirect } from "@sveltejs/kit";
 
     export let form_id: string;
     let dependees: Record<string, Writable<any>>;
@@ -26,6 +27,9 @@
         });
 
         data = await res.json();
+        if (data.form_id == undefined) {
+            redirect(308, "/error");
+        }
         [form, groups, values] = await getFormTypeProcessedData(
             data.form_type_id,
         );
@@ -39,7 +43,12 @@
 </script>
 
 {#if form_type_id}
-    <FormBuilder {form} groupedFields={groups} {dependees} />
+    <FormBuilder
+        schema={form}
+        groupedFields={groups}
+        values={dependees}
+        readOnly={true}
+    />
 {:else}
     <Chargeicon />
 {/if}

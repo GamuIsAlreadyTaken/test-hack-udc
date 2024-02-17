@@ -13,6 +13,7 @@
 <script lang="ts">
     export let data: DateFormFieldSchema;
     export let value: Writable<Date> = writable(data.field_default_value);
+    export let readOnly: boolean = false;
 </script>
 
 <div>
@@ -25,7 +26,7 @@
         type="date"
         bind:value={$value}
         required={data.field_required}
-        readonly={data.field_readonly}
+        readonly={data.field_readonly || readOnly}
     />
 </div>
 

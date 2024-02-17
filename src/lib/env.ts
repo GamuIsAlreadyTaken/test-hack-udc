@@ -1,3 +1,3 @@
-export const apiUrl = "https://0fcd2366-7de6-464f-b389-b9a5533ed9af.mock.pstmn.io/api/v1/"
+export const apiUrl = "https://6998d03a-05e2-413c-9d04-30520c8d2e7c.mock.pstmn.io/api/v1/"
 export const formsTypes = 'formTypes'
 export const forms = 'forms'

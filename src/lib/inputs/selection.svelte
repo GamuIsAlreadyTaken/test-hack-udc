@@ -16,6 +16,7 @@
 <script lang="ts">
     export let data: SelectFormFieldSchema;
     export let value: Writable<string> = writable(data.field_default_value);
+    export let readOnly: boolean = false;
     let opciones = data.field_validations?.options ?? [];
     let allowMultiple: boolean = (
         data.field_validations as AllowMultipleOptions
@@ -32,7 +33,7 @@
             name={data.field_id}
             bind:value={$value}
             required={data.field_required}
-            disabled={data.field_readonly}
+            disabled={data.field_readonly || readOnly}
             multiple
         >
             {#each opciones as opt}
@@ -47,12 +48,12 @@
             name={data.field_id}
             bind:value={$value}
             required={data.field_required}
-            disabled={data.field_readonly}
+            disabled={data.field_readonly || readOnly}
         >
             {#each opciones as opt}
-                <option value={opt} selected={opt == data.field_default_value}
-                    >{opt}</option
-                >
+                <option value={opt} selected={opt == data.field_default_value}>
+                    {opt}
+                </option>
             {/each}
         </select>
     {/if}

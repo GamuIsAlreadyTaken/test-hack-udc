@@ -36,7 +36,6 @@ export const actions = {
             headers: { mock: '1' },
             body: JSON.stringify(parsedJson)
         })
-        console.log(res)
 
         if (res.ok) return redirect(300, '/')
         return fail(418, {

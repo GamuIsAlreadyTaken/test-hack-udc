@@ -11,7 +11,8 @@
 <script lang="ts">
     import Chargeicon from "$lib/assets/chargeicon.svelte";
     import { apiUrl, forms } from "$lib/env";
-    import { createEventDispatcher, onMount } from "svelte";
+    import { createEventDispatcher, getContext, onMount } from "svelte";
+    import type { Writable } from "svelte/store";
 
     let formTypes: FormBrief[] = [];
 
@@ -23,15 +24,19 @@
         formTypes = await res.json();
     });
     const dispatch = createEventDispatcher<FormRequestEvent>();
+    function handleClick(id: string) {
+        dispatch("formRequest", { id });
+        let loading: Writable<boolean> = getContext("loading");
+        loading.set(true);
+    }
 </script>
 
-<h2>FormTypes disponibles:</h2>
+<h2>Forms hechos disponibles:</h2>
 <div>
     {#each formTypes as formType}
         <button
             class="accent-button"
-            on:click={() =>
-                dispatch("formRequest", { id: formType.form_type_id })}
+            on:click={() => handleClick(formType.form_id)}
         >
             {formType.title_field}
         </button>

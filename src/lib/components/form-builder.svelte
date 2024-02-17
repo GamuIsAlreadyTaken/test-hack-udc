@@ -18,7 +18,7 @@
     export let groupedFields: ReturnType<typeof groupElements>;
     export let route: string;
 
-    let readOnly = getContext<boolean>("readOnly") ?? false;
+    export let readOnly: boolean = false;
     setContext("readOnly", readOnly);
     let loading = getContext<Writable<boolean>>("loading");
 

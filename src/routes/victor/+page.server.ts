@@ -1,5 +1,5 @@
-import { json, type Actions, redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from '../$types';
+import type { Actions } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 import { processFormData } from '$lib/form_handeler';
 import { apiUrl, forms } from '$lib/env';
 

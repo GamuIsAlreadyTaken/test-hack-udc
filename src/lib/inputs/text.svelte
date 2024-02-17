@@ -22,9 +22,9 @@
     export let data: TextFormFieldSchema;
     export let value: Writable<string>;
 
-    let minlength = (data.field_validations as MinLength).min_length;
-    let maxlength = (data.field_validations as MaxLength).max_length;
-    let pattern = (data.field_validations as Format).format;
+    let minlength = (data.field_validations as MinLength)?.min_length;
+    let maxlength = (data.field_validations as MaxLength)?.max_length;
+    let pattern = (data.field_validations as Format)?.format;
 </script>
 
 <label for={data.field_name}>
@@ -44,13 +44,13 @@
 </label>
 
 <style>
-    label{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 10vh;
-      flex-direction: column;
-      margin-bottom: 5px;
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+        flex-direction: column;
+        margin-bottom: 5px;
     }
 
     @keyframes gradient {
@@ -107,4 +107,3 @@
         background-color: rgba(57, 63, 84, 0.8);
     }
 </style>
-

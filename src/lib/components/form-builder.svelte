@@ -1,7 +1,6 @@
 <script lang="ts">
     import Chargeicon from "../assets/chargeicon.svelte";
     import type { FormSchema, GroupSchema } from "../types/api-schema";
-
     import {
         processors,
         getFieldType,
@@ -12,11 +11,11 @@
     import { onMount } from "svelte";
     import type { Writable } from "svelte/store";
     import MaybeDependant from "$lib/components/maybe-dependant.svelte";
-    import { apiUrl, formTypes } from "$lib/env";
+    import { apiUrl, formsTypes } from "$lib/env";
 
-    export let form_id: number;
+    export let form_id: string;
 
-    const url = apiUrl + formTypes;
+    const url = apiUrl + formsTypes;
 
     let form: FormSchema;
     let groups: GroupSchema[] = [];
@@ -26,14 +25,14 @@
     onMount(async () => {
         const res = await fetch(url, {
             method: "GET",
-            headers: { form_type_id: form_id.toString() },
+            headers: { form_type_id: form_id },
         });
         const formSchema: FormSchema = await res.json();
 
         form = formSchema;
-        groupedFields = groupElements(formSchema.form_fields);
-        groups = formSchema.form_groups.toSorted(orderBy("group_order"));
-        dependees = getWritables(formSchema.form_fields);
+        groupedFields = groupElements(formSchema.form_fields ?? []);
+        groups = formSchema.form_groups?.toSorted(orderBy("group_order")) ?? [];
+        dependees = getWritables(formSchema.form_fields ?? []);
     });
 </script>
 
@@ -64,7 +63,6 @@
 
 <style>
     fieldset {
-    
         margin: 0;
         padding: 10px; /* Puedes ajustar el valor de padding según tus necesidades */
         box-sizing: border-box; /* Incluye el padding en el ancho y alto del fieldset */
@@ -72,7 +70,7 @@
         width: 100%;
     }
     form {
-        width: 40%;
         padding: 10px;
+        z-index: 1;
     }
 </style>

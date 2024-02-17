@@ -2,10 +2,10 @@
 export type FormSchema = {
     form_type_id: string,
     form_type_name: string,
-    form_type_description: string,
+    form_type_description?: string,
     title_field: { field_description: string },
-    form_fields: GenericFormFieldSchema[],
-    form_groups: GroupSchema[],
+    form_fields?: GenericFormFieldSchema[],
+    form_groups?: GroupSchema[],
 }
 
 export type GroupSchema = {

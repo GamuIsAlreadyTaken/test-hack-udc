@@ -27,13 +27,24 @@
     />
 </label>
 
+
 <style>
     label{
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        height: 10vh;
-        flex-direction: column;
-        margin-bottom: 5px; 
+      display: flex;
+      align-items: left;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 5px;
     }
+    input {
+      text-align: left;
+      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1rem;
+      vertical-align: center;
+      background-color: rgba(57, 63, 84, 0.8);
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
 </style>

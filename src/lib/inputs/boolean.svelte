@@ -15,24 +15,30 @@
     export let value: Writable<boolean> = writable(data.field_default_value);
 </script>
 
-<label for={data.field_name}>
-    {data.field_description}
-    <input
-        class="check"
-        name={data.field_id}
-        type="checkbox"
-        bind:checked={$value}
-        required={data.field_required}
-        disabled={data.field_readonly}
-    />
-</label>
+<div>
+    <label for={data.field_name}>
+        <input
+            class="check"
+            name={data.field_id}
+            type="checkbox"
+            bind:checked={$value}
+            required={data.field_required}
+            disabled={data.field_readonly}
+        />
+        {data.field_description}
+    </label>
+</div>
 
 <style>
-    label{
-        align-items: center;
-        justify-content: center;
-        height: 10vh;
-        margin-bottom: 5px;
+    div {
         display: flex;
+        align-items: center;
+    }
+    label {
+        display: flex;
+        align-items: left;
+        margin-top: 5px;
+        margin-left: 0px;
+        margin-bottom: 5px;
     }
 </style>

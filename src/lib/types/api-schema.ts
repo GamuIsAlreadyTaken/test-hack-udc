@@ -3,7 +3,7 @@ export type FormSchema = {
     form_type_id: string,
     form_type_name: string,
     form_type_description: string,
-    title_field: string,
+    title_field: { field_description: string },
     form_fields: GenericFormFieldSchema[],
     form_groups: GroupSchema[],
 }
@@ -33,7 +33,7 @@ export type GenericFormFieldSchema = {
 
 export type FormFieldDependencies = {
     field_id: string,
-    field_value: any
+    field_value: { description: any }
 }
 
 export type FormFieldType =
@@ -41,5 +41,5 @@ export type FormFieldType =
     'number' |
     'date' |
     'select' |
-    'checkbox'
+    'boolean'
 

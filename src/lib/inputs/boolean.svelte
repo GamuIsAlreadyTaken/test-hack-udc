@@ -22,6 +22,7 @@
         name={data.field_id}
         type="checkbox"
         bind:checked={$value}
+        required={data.field_required}
         disabled={data.field_readonly}
     />
 </label>

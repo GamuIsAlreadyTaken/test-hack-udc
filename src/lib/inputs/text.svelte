@@ -37,6 +37,7 @@
             {minlength}
             {maxlength}
             {pattern}
+            required={data.field_required}
             readonly={data.field_readonly}
         />
     </div>

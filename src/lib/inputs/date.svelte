@@ -22,6 +22,7 @@
         name={data.field_id}
         type="date"
         bind:value={$value}
+        required={data.field_required}
         readonly={data.field_readonly}
     />
 </label>

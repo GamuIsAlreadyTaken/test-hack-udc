@@ -1,4 +1,4 @@
-import { json, type Actions } from '@sveltejs/kit';
+import { json, type Actions, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { processFormData } from '$lib/form_handeler';
 
@@ -10,6 +10,11 @@ export const load = (async () => {
 export const actions = {
     process: async (event) => {
         const processedData = processFormData(await event.request.formData())
-        fetch(JSON.stringify(processedData), { method: 'POST', headers: { mock: '1' } })
+        let response = await fetch(, { method: 'POST', body: JSON.stringify(processedData) })
+        if (response.ok) {
+            return {}
+        }
+
+        redirect(300, '/')
     },
 } satisfies Actions;

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Chargeicon from "./assets/chargeicon.svelte";
-    import type { FormSchema, GroupSchema } from "./types/api-schema";
+    import Chargeicon from "../assets/chargeicon.svelte";
+    import type { FormSchema, GroupSchema } from "../types/api-schema";
 
     import {
         processors,
@@ -10,9 +10,8 @@
         getWritables,
     } from "$lib/inputs/module";
     import { onMount } from "svelte";
-    import DependentElement from "./dependent-element.svelte";
     import type { Writable } from "svelte/store";
-    import MaybeDependant from "./maybe-dependant.svelte";
+    import MaybeDependant from "$lib/components/maybe-dependant.svelte";
 
     export let form_id: number;
 
@@ -39,7 +38,7 @@
 </script>
 
 {#if form}
-    <form action="">
+    <form method="POST" action="?/process">
         <h5>{form.title_field.field_description}:</h5>
         <h2>{form.form_type_name}</h2>
         <p>{form.form_type_description}</p>

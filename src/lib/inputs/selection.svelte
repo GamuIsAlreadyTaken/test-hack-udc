@@ -25,6 +25,7 @@
         class="select"
         name={data.field_id}
         bind:value={$value}
+        required={data.field_required}
         disabled={data.field_readonly}
     >
         {#each opciones as opt}

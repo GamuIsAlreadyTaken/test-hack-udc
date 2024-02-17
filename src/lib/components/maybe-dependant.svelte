@@ -1,8 +1,8 @@
 <script lang="ts">
     import type { Writable } from "svelte/store";
-    import DependentElement from "./dependent-element.svelte";
-    import { getFieldType, processors } from "./inputs/module";
-    import type { GenericFormFieldSchema } from "./types/api-schema";
+    import DependentElement from "$lib/components/dependent-element.svelte";
+    import { getFieldType, processors } from "$lib/inputs/module";
+    import type { GenericFormFieldSchema } from "$lib/types/api-schema";
 
     export let data: GenericFormFieldSchema;
     export let dependees: Record<string, Writable<any>>;

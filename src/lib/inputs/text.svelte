@@ -41,6 +41,57 @@
     </div>
 </label>
 
+<style>
+    @keyframes gradient {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 100% 0;
+        }
+    }
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    div {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: 2px;
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            z-index: 999;
+            height: 2px;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+            background-position: 0% 0%;
+            background: linear-gradient(
+                to right,
+                #b294ff,
+                #57e6e6,
+                #feffb8,
+                #57e6e6,
+                #b294ff,
+                #57e6e6
+            );
+            background-size: 500% auto;
+            animation: gradient 3s linear infinite;
+        }
+    }
 
-
-
+    input {
+        flex-grow: 1;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        vertical-align: middle;
+    }
+</style>

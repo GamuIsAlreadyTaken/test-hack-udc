@@ -7,7 +7,8 @@
     export let data: ParsedFormData;
 
     onMount(() => {
-        for (const fields of data.form_fields)
-            values[fields.field_id].set(fields.field_value);
+        for (const field of data.form_fields)
+            if (values[field.field_id])
+                values[field.field_id].set(field.field_value);
     });
 </script>

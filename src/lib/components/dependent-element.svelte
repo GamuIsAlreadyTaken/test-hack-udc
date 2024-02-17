@@ -19,5 +19,5 @@
 </script>
 
 {#if $show}
-    <svelte:component this={component} {readOnly} key={component} {data} bind:value />
+    <svelte:component this={component} {data} bind:value />
 {/if}

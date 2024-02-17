@@ -1,4 +1,4 @@
-import { apiUrl, formsTypes } from '$lib/env.js';
+import { apiUrl, forms, formsTypes } from '$lib/env.js';
 import { processFormData } from '$lib/form_handeler.js';
 import type { FormSchema } from '$lib/types/api-schema.js';
 import { error, type Actions, redirect, fail } from '@sveltejs/kit';
@@ -9,6 +9,8 @@ export async function load({ params }) {
         method: "GET",
         headers: { form_type_id: params.id },
     });
+
+    if (!res.ok) error(404, { message: 'El esquema del formulario no se encontró' })
 
     const schema: FormSchema = await res.json()
 
@@ -23,21 +25,22 @@ export const actions = {
         const formdata = await event.request.formData()
         const parsedJson = processFormData(formdata)
 
-        if (parsedJson.form_id == '' ||
-            parsedJson.form_type_id == '' ||
+        if (parsedJson.form_type_id == '' ||
             parsedJson.title_field == ''
         ) return fail(418, {
             message: 'Los datos suplimentados no son validos',
-            prevData: parsedJson
         })
 
-        let res = await fetch(apiUrl + formsTypes, {
+        let res = await fetch(apiUrl + forms, {
             method: 'POST',
             headers: { mock: '1' },
             body: JSON.stringify(parsedJson)
         })
+        console.log(res)
 
-        if (res.ok) redirect(300, '/')
-        return { failStatus: res.status }
+        if (res.ok) return redirect(300, '/')
+        return fail(418, {
+            message: 'Los datos suplimentados no se pudieron subir',
+        })
     }
 } satisfies Actions;

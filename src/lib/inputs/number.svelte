@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
     import type { GenericFormFieldSchema } from "$lib/types/api-schema";
     import type { MaxValue, MinValue } from "$lib/types/form-validations";
+    import { writable, type Writable } from "svelte/store";
 
     export type NumberFormFieldSchema = GenericFormFieldSchema & {
         field_type: "number";
@@ -11,22 +12,21 @@
 
 <script lang="ts">
     export let data: NumberFormFieldSchema;
+    export let value: Writable<number> = writable(data.field_default_value);
 
     let min = (data.field_validations as MinValue).min_value;
     let max = (data.field_validations as MaxValue).max_value;
 </script>
 
-
-
 <label for={data.field_name}>
     {data.field_description}
     <input
-    class="numero"
-    name={data.field_id}
-    type="number"
-    bind:value={data.field_default_value}
-    {min}
-    {max}
-    readonly={data.field_readonly}
-/>
+        class="numero"
+        name={data.field_id}
+        type="number"
+        bind:value={$value}
+        {min}
+        {max}
+        readonly={data.field_readonly}
+    />
 </label>

@@ -42,7 +42,7 @@
       font-size: 1rem;
       line-height: 1rem;
       vertical-align: center;
-      background-color: rgba(57, 63, 84, 0.8);
+      background-color: rgba(255, 255, 255, 0.556);
       margin-top: 2px;
       margin-bottom: 10px;
     }

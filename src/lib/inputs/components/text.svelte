@@ -25,24 +25,18 @@
     let pattern = (data.field_validations as Format).format;
 </script>
 
-<label>{data.field_description}<br /></label>
+<label for={data.field_name}>
+    {data.field_description}<br />
 
-{#if data.field_readonly}
     <input
         class="textbox"
+        name={data.field_id}
         type="text"
         bind:value={data.field_default_value}
         {minlength}
         {maxlength}    
         readonly
     />
-{:else}
-    <input 
-    class="textbox" 
-    type="text" 
-    bind:value={data.field_default_value}
-    {minlength}
-    {maxlength}
-    {pattern}
-    />
-{/if}
+</label>
+
+

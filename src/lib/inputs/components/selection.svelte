@@ -14,18 +14,17 @@
     let opciones = data.field_validations?.options ?? [];
 </script>
 
-{#if data.field_readonly}
-    <select name="select" bind:value={data.field_default_value} disabled>
-        {#each opciones as opt}
-            <option value={opt}>{opt}</option>
-        {/each}
-    </select>
-{:else}
-    <select name="select" bind:value={data.field_default_value}>
-        {#each opciones as opt}
-            <option value={opt}>{opt}</option>
-        {/each}
-    </select>
-{/if}
 
-<label>{data.field_description}</label>
+
+<label for={data.field_name}> 
+    <select 
+    class="select"
+    name={data.field_id}
+    bind:value={data.field_default_value} 
+    disabled={data.field_readonly}>
+        {#each opciones as opt}
+            <option value={opt}>{opt}</option>
+        {/each}
+    </select>
+    {data.field_description}
+</label>

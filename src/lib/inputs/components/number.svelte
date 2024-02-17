@@ -16,23 +16,17 @@
     let max = (data.field_validations as MaxValue).max_value;
 </script>
 
-{#if data.field_readonly}
-    <input
-        class="numero"
-        type="number"
-        bind:value={data.field_default_value}
-        {min}
-        {max}
-        readonly
-    />
-{:else}
-    <input
-        class="numero"
-        type="number"
-        bind:value={data.field_default_value}
-        {min}
-        {max}
-    />
-{/if}
 
-<label>{data.field_description}</label>
+
+<label for={data.field_name}>
+    <input
+    class="numero"
+    name={data.field_id}
+    type="number"
+    bind:value={data.field_default_value}
+    {min}
+    {max}
+    readonly={data.field_readonly}
+/>
+    {data.field_description}
+</label>

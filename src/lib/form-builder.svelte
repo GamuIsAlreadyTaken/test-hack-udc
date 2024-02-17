@@ -1,41 +1,27 @@
 <script lang="ts">
     import type {
-        FormFieldType,
         FormSchema,
         GenericFormFieldSchema,
     } from "./types/api-schema";
 
     import data from "./targets.json";
 
-    import Checkbox from "./inputs/components/checkbox.svelte";
-    import Number from "./inputs/components/number.svelte";
-    import Text from "./inputs/components/text.svelte";
-    import Date from "./inputs/components/date.svelte";
-    import Selection from "./inputs/components/selection.svelte";
+    import { processors, getFieldType } from "$lib/inputs/components/module";
+    import { onMount } from "svelte";
 
     const url =
         "https://0fcd2366-7de6-464f-b389-b9a5533ed9af.mock.pstmn.io/api/v1/formTypes";
+    let req: Promise<Response>;
+    onMount(() => {
+        req = fetch(url, { method: "GET" });
+    });
 
-    // const req = fetch(url, { method: "GET" });
+    async function getFormSchema(): FormSchema {}
+
     const fields = data.form_fields as GenericFormFieldSchema[];
-
-    const processors: Record<
-        FormFieldType,
-        ConstructorOfATypedSvelteComponent
-    > = {
-        checkbox: Checkbox,
-        number: Number,
-        text: Text,
-        date: Date,
-        select: Selection,
-    };
-
-    function getFieldType(field: GenericFormFieldSchema): FormFieldType {
-        return field.field_type;
-    }
 </script>
 
-{#each fields as field}
-    {@const type = getFieldType(field)}
-    <svelte:component this={processors[type]} data={field}></svelte:component>
+{#each fields as data}
+    {@const type = getFieldType(data)}
+    <svelte:component this={processors[type]} {data}></svelte:component>
 {/each}

@@ -1,6 +1,6 @@
 
 export type FormSchema = {
-    form_type_id: number,
+    form_type_id: string,
     form_type_name: string,
     form_type_description: string,
     title_field: string,
@@ -9,7 +9,7 @@ export type FormSchema = {
 }
 
 export type GroupSchema = {
-    group_id: number,
+    group_id: string,
     group_name: string,
     group_description: string,
     group_order: number,
@@ -19,7 +19,7 @@ export type GroupSchema = {
  without `field_default_value` and `field_validations`
  */
 export type GenericFormFieldSchema = {
-    field_id: number,
+    field_id: string,
     field_name: string,
     field_type: FormFieldType,
     field_order: number,

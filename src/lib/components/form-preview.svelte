@@ -1,21 +1,22 @@
 <script lang="ts" context="module">
     export type FormRequestEvent = { formRequest: { id: string } };
-    type FormTypeBrief = {
+    type FormBrief = {
         // move to api-schema
+        form_id: string;
+        title_field: string;
         form_type_id: string;
-        form_type_name: string;
     };
 </script>
 
 <script lang="ts">
     import Chargeicon from "$lib/assets/chargeicon.svelte";
-    import { apiUrl, formsTypes } from "$lib/env";
+    import { apiUrl, forms } from "$lib/env";
     import { createEventDispatcher, onMount } from "svelte";
 
-    let formTypes: FormTypeBrief[] = [];
+    let formTypes: FormBrief[] = [];
 
     onMount(async () => {
-        let res = await fetch(apiUrl + formsTypes, {
+        let res = await fetch(apiUrl + forms, {
             method: "GET",
             headers: { mock: "1" },
         });
@@ -32,7 +33,7 @@
             on:click={() =>
                 dispatch("formRequest", { id: formType.form_type_id })}
         >
-            {formType.form_type_name}
+            {formType.title_field}
         </button>
     {:else}
         <Chargeicon />

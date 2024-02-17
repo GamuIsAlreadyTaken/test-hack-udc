@@ -43,3 +43,14 @@ export type FormFieldType =
     'select' |
     'boolean'
 
+export type FormValues = {
+    field_id: string,
+    field_value: string
+}
+
+export type FormData = {
+    form_id: string,
+    form_type_id: string,
+    title_field: string,
+    form_fields: FormValues[]
+}

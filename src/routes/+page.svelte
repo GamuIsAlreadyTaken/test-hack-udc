@@ -1,13 +1,23 @@
 <script lang="ts">
+    import Chargeicon from "$lib/assets/chargeicon.svelte";
     import FormBuilder from "$lib/components/form-builder.svelte";
+    import FormHidrater from "$lib/components/form-hidrater.svelte";
+    import FormPreview from "$lib/components/form-preview.svelte";
     import FormTypePreview, {
         type FormRequestEvent,
     } from "$lib/components/form-type-preview.svelte";
+    import { getFormTypeProcessedData } from "$lib/inputs/module";
     let modal = false;
-    let form_id: string;
+    let hidrate = false;
+    let id: string;
     function launchForm(event: CustomEvent<FormRequestEvent["formRequest"]>) {
         modal = true;
-        form_id = event.detail.id;
+        id = event.detail.id;
+    }
+    function hidrateForm(event: CustomEvent<FormRequestEvent["formRequest"]>) {
+        modal = true;
+        hidrate = true;
+        id = event.detail.id;
     }
 </script>
 
@@ -18,39 +28,52 @@
 <!-- Cojer la lista de todos los posibles forms y mostrarla para elegir cual quieres -->
 <!-- al clicar uno de ellos se carga el formulario para ser rellenado -->
 <FormTypePreview on:formRequest={launchForm} />
+
+<!-- Al rellenarlo, mostrar una preview en modo no editar, tipo revision de datos -->
+<!-- Quizá guardar en local una copia de los datos que se subieron para hacer un `enviados` -->
+<FormPreview on:formRequest={hidrateForm} />
+<!-- Una sección de enviados, remarcar si estan en local o pillados de la api -->
+<!-- Hacer un hidratador, GET a /forms y que saque que formType es, lo carge y rellene los datos 
+    en modo vista solo -->
 {#if modal}
-    <button class="back" on:click={() => (modal = false)}>
+    <button class="back" on:click|self={() => (modal = false)}>
         <div class="container">
-            <FormBuilder {form_id} />
+            {#if hidrate}
+                <FormHidrater form_id={id} />
+            {:else}
+                {#await getFormTypeProcessedData(id)}
+                    <Chargeicon />
+                {:then [form, groups, values]}
+                    <FormBuilder
+                        {form}
+                        groupedFields={groups}
+                        dependees={values}
+                    />
+                {/await}
+            {/if}
         </div>
     </button>
 {/if}
 
-<!-- Al rellenarlo, mostrar una preview en modo no editar, tipo revision de datos -->
-<!-- Quizá guardar en local una copia de los datos que se subieron para hacer un `enviados` -->
-
-<!-- Una sección de enviados, remarcar si estan en local o pillados de la api -->
-<!-- Hacer un hidratador, GET a /forms y que saque que formType es, lo carge y rellene los datos 
-en modo vista solo -->
-
 <style>
     .back {
-        position: absolute;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        background-color: #7777;
-        z-index: 1;
         top: 0;
         left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
         display: flex;
-        justify-content: center;
+        position: absolute;
         align-items: center;
+        justify-content: center;
+        background-color: #7777;
     }
 
     .container {
         position: relative;
-        background-color: #7777;
+        background-color: var(--background);
         width: 500px;
+        height: 100vh;
+        overflow-y: scroll;
     }
 </style>

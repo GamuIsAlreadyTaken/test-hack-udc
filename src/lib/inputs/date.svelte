@@ -15,8 +15,10 @@
     export let value: Writable<Date> = writable(data.field_default_value);
 </script>
 
-<label for={data.field_name}>
-    {data.field_description}<br/>
+<div>
+    <label for={data.field_name}>
+        {data.field_description}{data.field_required ? "*" : ""}
+    </label>
     <input
         class="fecha"
         name={data.field_id}
@@ -25,26 +27,23 @@
         required={data.field_required}
         readonly={data.field_readonly}
     />
-</label>
-
+</div>
 
 <style>
-    label{
-      display: flex;
-      align-items: left;
-      justify-content: center;
-      flex-direction: column;
-      margin-bottom: 5px;
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+    label {
+        margin-bottom: 5px;
     }
     input {
-      text-align: left;
-      flex-grow: 1;
-      font-size: 1rem;
-      line-height: 1rem;
-      vertical-align: center;
-      background-color: rgba(255, 255, 255, 0.556);
-      margin-top: 2px;
-      margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+        line-height: 1rem;
+        background-color: rgba(255, 255, 255, 0.556);
+        margin-top: 2px;
+        margin-bottom: 10px;
     }
-
 </style>

@@ -5,7 +5,7 @@
     export let form: ActionData;
 </script>
 
-<FormBuilder form_id={1} />
+<FormBuilder form_id={'1'} />
 
 {#if form?.success}
     <p>Los datos se han subido correctamente</p>

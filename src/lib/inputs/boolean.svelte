@@ -16,29 +16,27 @@
 </script>
 
 <div>
-    <label for={data.field_name}>
-        <input
-            class="check"
-            name={data.field_id}
-            type="checkbox"
-            bind:checked={$value}
-            required={data.field_required}
-            disabled={data.field_readonly}
-        />
-        {data.field_description}
-    </label>
+    <label for={data.field_name}>{data.field_description}{data.field_required ? '*' : ''}</label>
+    <input
+        class="check"
+        name={data.field_id}
+        type="checkbox"
+        bind:checked={$value}
+        required={data.field_required}
+        disabled={data.field_readonly}
+    />
 </div>
 
 <style>
     div {
         display: flex;
-        align-items: center;
+        flex-direction: row;
+        align-items: baseline;
     }
     label {
-        display: flex;
-        align-items: left;
+        text-align: left;
+        width: 280px;
         margin-top: 5px;
-        margin-left: 0px;
         margin-bottom: 5px;
     }
 </style>

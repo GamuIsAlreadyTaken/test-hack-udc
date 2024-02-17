@@ -1,10 +1,11 @@
-import type { FormFieldType, GenericFormFieldSchema } from "$lib/types/api-schema";
+import type { FormFieldType, FormSchema, GenericFormFieldSchema } from "$lib/types/api-schema";
 import { writable, type Writable } from "svelte/store";
 import Boolean from "./boolean.svelte";
 import Date from "./date.svelte";
 import Number from "./number.svelte";
 import Selection from "./selection.svelte";
 import Text from "./text.svelte";
+import { apiUrl, formsTypes } from "$lib/env";
 
 export const processors: Record<
     FormFieldType,
@@ -56,4 +57,19 @@ export function getWritables(
     }
 
     return result
+}
+
+
+export async function getFormTypeProcessedData(form_type_id: string) {
+    const res = await fetch(apiUrl + formsTypes, {
+        method: "GET",
+        headers: { form_type_id },
+    });
+    const formSchema: FormSchema = await res.json();
+
+    return [
+        formSchema,
+        groupElements(formSchema.form_fields ?? []),
+        getWritables(formSchema.form_fields ?? [])
+    ] as const
 }

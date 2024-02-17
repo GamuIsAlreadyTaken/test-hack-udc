@@ -18,10 +18,11 @@
     let max = (data.field_validations as MaxValue).max_value;
 </script>
 
-<label for={data.field_name}>
-    {data.field_description}
-</label>
-<input
+<div>
+    <label for={data.field_name}>
+        {data.field_description}{data.field_required ? '*' : ''}
+    </label>
+    <input
         class="numero"
         name={data.field_id}
         type="number"
@@ -31,24 +32,24 @@
         required={data.field_required}
         readonly={data.field_readonly}
     />
+</div>
 
 <style>
-    label{
-      display: flex;
-      align-items: left;
-      justify-content: center;
-      height: 2vh;
-      flex-direction: column;
-      margin-bottom: 5px;
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+    label {
+        margin-bottom: 5px;
     }
     input {
-      text-align: left;
-      flex-grow: 1;
-      font-size: 1rem;
-      line-height: 1rem;
-      vertical-align: center;
-      background-color: rgba(255, 255, 255, 0.556);
-      margin-top: 2px;
-      margin-bottom: 10px;
+        border-radius: 5px;
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1rem;
+        background-color: rgba(255, 255, 255, 0.556);
+        margin-top: 2px;
+        margin-bottom: 10px;
     }
 </style>

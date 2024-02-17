@@ -6,34 +6,18 @@
         getFieldType,
         groupElements,
         orderBy,
-        getWritables,
     } from "$lib/inputs/module";
-    import { onMount } from "svelte";
     import type { Writable } from "svelte/store";
     import MaybeDependant from "$lib/components/maybe-dependant.svelte";
     import { apiUrl, formsTypes } from "$lib/env";
 
-    export let form_id: string;
-
     const url = apiUrl + formsTypes;
 
-    let form: FormSchema;
-    let groups: GroupSchema[] = [];
-    let groupedFields: ReturnType<typeof groupElements> = {};
-    let dependees: Record<string, Writable<any>>;
-
-    onMount(async () => {
-        const res = await fetch(url, {
-            method: "GET",
-            headers: { form_type_id: form_id },
-        });
-        const formSchema: FormSchema = await res.json();
-
-        form = formSchema;
-        groupedFields = groupElements(formSchema.form_fields ?? []);
-        groups = formSchema.form_groups?.toSorted(orderBy("group_order")) ?? [];
-        dependees = getWritables(formSchema.form_fields ?? []);
-    });
+    export let form: FormSchema;
+    export let dependees: Record<string, Writable<any>> = {};
+    export let groupedFields: ReturnType<typeof groupElements>;
+    let groups: GroupSchema[] =
+        form.form_groups?.toSorted(orderBy("group_order")) ?? [];
 </script>
 
 {#if form}
@@ -55,7 +39,7 @@
             <svelte:component this={processors[type]} data={freeField} />
         {/each}
 
-        <input type="submit" value="Enviar" />
+        <input type="submit" value="Enviar" class="accent-button" />
     </form>
 {:else}
     <Chargeicon />
@@ -65,13 +49,19 @@
     @import url("https://fonts.cdnfonts.com/css/roboto");
     fieldset {
         font-family: "Roboto", sans-serif;
-        background-color: #f2dede;
+        background-color: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        margin: 10px 0;
+    }
+    legend {
+        border: 1px solid var(--border);
+        border-radius: 3px;
     }
     form {
-        position: absolute;
-        right: 30%;
-        width: 60%;
         padding: 10px;
     }
-
+    input {
+        width: 100%;
+    }
 </style>

@@ -1,13 +1,11 @@
-type form_fields = {
-    field_id: string,
-    field_value: string
-}
+import type { FormValues } from "./types/api-schema";
+
 export function processFormData(data: FormData) {
     let parsedData = {
         form_id: data.get('form_id'), // form_id
         form_type_id: data.get('form_type_id'),
         title_field: data.get('title_field'),
-        form_fields: [] as form_fields[]
+        form_fields: [] as FormValues[]
     }
 
     for (const [id, value] of data) {

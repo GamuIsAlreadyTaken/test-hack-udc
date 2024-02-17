@@ -64,15 +64,18 @@
 
 <style>
     fieldset {
-    
         margin: 0;
         padding: 10px; /* Puedes ajustar el valor de padding según tus necesidades */
         box-sizing: border-box; /* Incluye el padding en el ancho y alto del fieldset */
         border: 1px solid #282626; /* Añade un borde al fieldset */
         width: 100%;
+     
     }
     form {
+        position: absolute;
         width: 40%;
+        right: 30%;
         padding: 10px;
+
     }
 </style>

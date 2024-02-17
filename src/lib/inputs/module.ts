@@ -1,6 +1,6 @@
 import type { FormFieldType, GenericFormFieldSchema } from "$lib/types/api-schema";
-import { writable, type Readable, type Writable } from "svelte/store";
-import Checkbox from "./checkbox.svelte";
+import { writable, type Writable } from "svelte/store";
+import Boolean from "./boolean.svelte";
 import Date from "./date.svelte";
 import Number from "./number.svelte";
 import Selection from "./selection.svelte";
@@ -10,7 +10,7 @@ export const processors: Record<
     FormFieldType,
     ConstructorOfATypedSvelteComponent
 > = {
-    boolean: Checkbox,
+    boolean: Boolean,
     number: Number,
     text: Text,
     date: Date,

@@ -1,9 +1,6 @@
 <script lang="ts">
-    import type {
-        FormSchema,
-        GenericFormFieldSchema,
-        GroupSchema,
-    } from "./types/api-schema";
+    import Chargeicon from "./assets/chargeicon.svelte";
+    import type { FormSchema, GroupSchema } from "./types/api-schema";
 
     import {
         processors,
@@ -11,10 +8,11 @@
         groupElements,
         orderBy,
         getWritables,
-    } from "$lib/inputs/components/module";
+    } from "$lib/inputs/module";
     import { onMount } from "svelte";
     import DependentElement from "./dependent-element.svelte";
-    import type { Readable, Writable } from "svelte/store";
+    import type { Writable } from "svelte/store";
+    import MaybeDependant from "./maybe-dependant.svelte";
 
     export let form_id: number;
 
@@ -40,7 +38,6 @@
     });
 </script>
 
-<!-- Dependencia, solo aparece si el valor del objetivo es x -->
 {#if form}
     <form action="">
         <h5>{form.title_field.field_description}:</h5>
@@ -50,23 +47,7 @@
             <fieldset>
                 <legend>{group.group_name}</legend>
                 {#each groupedFields[group.group_id] as field (field.field_order)}
-                    {@const component = processors[getFieldType(field)]}
-                    {#if field.field_dependent_on}
-                        <DependentElement
-                            {component}
-                            data={field}
-                            dependantValue={dependees[
-                                field.field_dependent_on.field_id
-                            ]}
-                            bind:value={dependees[field.field_id]}
-                        />
-                    {:else}
-                        <svelte:component
-                            this={component}
-                            data={field}
-                            bind:value={dependees[field.field_id]}
-                        />
-                    {/if}
+                    <MaybeDependant data={field} {dependees} />
                 {/each}
             </fieldset>
         {/each}
@@ -75,9 +56,11 @@
             {@const type = getFieldType(freeField)}
             <svelte:component this={processors[type]} data={freeField} />
         {/each}
+
+        <input type="submit" value="Enviar" />
     </form>
 {:else}
-    <p>Loading...</p>
+    <Chargeicon />
 {/if}
 
 <style>

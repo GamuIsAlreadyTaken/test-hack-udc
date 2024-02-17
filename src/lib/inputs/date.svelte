@@ -16,7 +16,7 @@
 </script>
 
 <label for={data.field_name}>
-    {data.field_description}
+    {data.field_description}<br/>
     <input
         class="fecha"
         name={data.field_id}
@@ -25,3 +25,14 @@
         readonly={data.field_readonly}
     />
 </label>
+
+<style>
+    label{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 10vh;
+        flex-direction: column;
+        margin-bottom: 5px; 
+    }
+</style>

@@ -65,8 +65,11 @@
 
 <style>
     fieldset {
-        display: flex;
-        flex-direction: column;
-        width: 500px;
+    
+        margin: 0;
+        padding: 10px; /* Puedes ajustar el valor de padding según tus necesidades */
+        box-sizing: border-box; /* Incluye el padding en el ancho y alto del fieldset */
+        border: 1px solid #282626; /* Añade un borde al fieldset */
+        width: 100%;
     }
 </style>

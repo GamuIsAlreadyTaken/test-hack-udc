@@ -42,6 +42,15 @@
 </label>
 
 <style>
+    label{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 10vh;
+      flex-direction: column;
+      margin-bottom: 5px;
+    }
+
     @keyframes gradient {
         0% {
             background-position: 0 0;
@@ -70,7 +79,7 @@
             right: 0px;
             bottom: 0px;
             z-index: 999;
-            height: 2px;
+            height: 4px;
             border-bottom-left-radius: 2px;
             border-bottom-right-radius: 2px;
             background-position: 0% 0%;
@@ -93,5 +102,7 @@
         font-size: 1.8rem;
         line-height: 2.4rem;
         vertical-align: middle;
+        background-color: rgba(57, 63, 84, 0.8);
     }
 </style>
+

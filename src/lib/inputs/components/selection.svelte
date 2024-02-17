@@ -8,14 +8,19 @@
 
 
 {#if data.field_readonly}
-<select name="select" disabled> 
+<select name="select" bind:value={data.field_default_value} disabled> 
     {#each opciones as opt}
         <option value={opt}>{opt}</option>
     {/each}
 
 </select>
 {:else}
-<input class="textbox" type="text" >
+<select name="select" bind:value={data.field_default_value}> 
+    {#each opciones as opt}
+        <option value={opt}>{opt}</option>
+    {/each}
+
+</select>
 {/if}
 
 <label>{data.field_description}</label>

@@ -1,11 +1,19 @@
 <script lang="ts" context="module">
-    import type { GenericFormFieldSchema } from "$lib/api-schema";
-    import type { MaxLength, MinLength } from "$lib/form-validations";
+    import type { GenericFormFieldSchema } from "$lib/types/api-schema";
+    import type {
+        Format,
+        MaxLength,
+        MinLength,
+    } from "$lib/types/form-validations";
 
     export type TextFormFieldSchema = GenericFormFieldSchema & {
         field_type: "text";
         field_default_value?: string;
-        field_validations?: MinLength | MaxLength | (MinLength & MaxLength);
+        field_validations?:
+            | MinLength
+            | MaxLength
+            | (MinLength & MaxLength)
+            | Format;
     };
 </script>
 

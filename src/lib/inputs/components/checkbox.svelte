@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-    import type { GenericFormFieldSchema } from "$lib/api-schema";
-    import type { NoValidation } from "$lib/form-validations";
+    import type { GenericFormFieldSchema } from "$lib/types/api-schema";
+    import type { NoValidation } from "$lib/types/form-validations";
 
     export type CheckboxFormFieldSchema = GenericFormFieldSchema & {
         field_type: "checkbox";

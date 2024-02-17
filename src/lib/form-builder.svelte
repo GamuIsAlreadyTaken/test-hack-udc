@@ -3,7 +3,7 @@
         FormFieldType,
         FormSchema,
         GenericFormFieldSchema,
-    } from "./api-schema";
+    } from "./types/api-schema";
 
     import data from "./targets.json";
 

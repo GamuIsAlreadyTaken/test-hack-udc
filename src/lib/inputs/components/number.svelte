@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-    import type { GenericFormFieldSchema } from "$lib/api-schema";
-    import type { MaxValue, MinValue } from "$lib/form-validations";
+    import type { GenericFormFieldSchema } from "$lib/types/api-schema";
+    import type { MaxValue, MinValue } from "$lib/types/form-validations";
 
     export type NumberFormFieldSchema = GenericFormFieldSchema & {
         field_type: "number";

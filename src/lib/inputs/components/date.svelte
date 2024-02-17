@@ -1,17 +1,15 @@
 <script lang="ts" context="module">
-    import type { GenericFormFieldSchema } from "$lib/api-schema";
-    import type { NoValidation } from "$lib/form-validations";
+    import type { GenericFormFieldSchema } from "$lib/types/api-schema";
+    import type { NoValidation } from "$lib/types/form-validations";
 
     export type DateFormFieldSchema = GenericFormFieldSchema & {
         field_type: "date";
         field_default_value?: Date;
         field_validations?: NoValidation;
     };
-
 </script>
 
 <script lang="ts">
-    
     export let data: DateFormFieldSchema;
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-    import type { GenericFormFieldSchema } from "$lib/api-schema";
-    import type { AllowMultipleOptions, Options } from "$lib/form-validations";
+    import type { GenericFormFieldSchema } from "$lib/types/api-schema";
+    import type { AllowMultipleOptions, Options } from "$lib/types/form-validations";
 
     export type SelectFormFieldSchema = GenericFormFieldSchema & {
         field_type: "select";

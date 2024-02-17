@@ -13,15 +13,13 @@
     export let data: DateFormFieldSchema;
 </script>
 
-{#if data.field_readonly}
+<label for={data.field_name}>
     <input
         class="fecha"
+        name={data.field_id}
         type="date"
         bind:value={data.field_default_value}
-        readonly
+        readonly={data.field_readonly}
     />
-{:else}
-    <input class="fecha" type="date" bind:value={data.field_default_value} />
-{/if}
-
-<label>{data.field_description}</label>
+    {data.field_description}
+</label>

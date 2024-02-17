@@ -63,19 +63,16 @@
 {/if}
 
 <style>
+    @import url("https://fonts.cdnfonts.com/css/roboto");
     fieldset {
-    
-        margin: 0;
-        padding: 10px; /* Puedes ajustar el valor de padding según tus necesidades */
-        box-sizing: border-box; /* Incluye el padding en el ancho y alto del fieldset */
-        border: 1px solid #282626; /* Añade un borde al fieldset */
-        width: 100%;
+        font-family: "Roboto", sans-serif;
+        background-color: #f2dede;
     }
     form {
         position: absolute;
         right: 30%;
-        width: 40%;
+        width: 60%;
         padding: 10px;
-    
     }
+
 </style>

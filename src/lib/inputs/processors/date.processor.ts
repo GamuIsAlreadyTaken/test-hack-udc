@@ -7,7 +7,3 @@ export type DateFormFieldSchema = GenericFormFieldSchema &
     field_default_value?: Date,
     field_validations?: NoValidation
 }
-
-export function parse(schema: DateFormFieldSchema) {
-    return // TODO, devolver el componente con las configuraciones
-}

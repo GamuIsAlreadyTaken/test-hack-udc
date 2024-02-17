@@ -2,4 +2,4 @@
     import FormBuilder from "$lib/form-builder.svelte";
 </script>
 
-<FormBuilder />
+<FormBuilder form_id={1} />

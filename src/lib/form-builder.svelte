@@ -14,20 +14,21 @@
 
     const url =
         "https://0fcd2366-7de6-464f-b389-b9a5533ed9af.mock.pstmn.io/api/v1/formTypes";
-    const form = writable<FormSchema>();
+    let fields: GenericFormFieldSchema[] = [];
     onMount(async () => {
         const res = await fetch(url, {
             method: "GET",
             headers: { form_type_id: form_id + "" },
         });
         const formSchema: FormSchema = await res.json();
-        form.set(formSchema);
+        // form.set(formSchema);
+        fields = formSchema.form_fields
     });
-
-    let fields: GenericFormFieldSchema[] = $form.form_fields;
 </script>
 
 {#each fields as data}
     {@const type = getFieldType(data)}
     <svelte:component this={processors[type]} {data}></svelte:component>
+{:else}
+<p>Loading...</p>
 {/each}

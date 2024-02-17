@@ -12,11 +12,11 @@
     import { onMount } from "svelte";
     import type { Writable } from "svelte/store";
     import MaybeDependant from "$lib/components/maybe-dependant.svelte";
+    import { apiUrl, formTypes } from "$lib/env";
 
     export let form_id: number;
 
-    const url =
-        "https://0fcd2366-7de6-464f-b389-b9a5533ed9af.mock.pstmn.io/api/v1/formTypes";
+    const url = apiUrl + formTypes;
 
     let form: FormSchema;
     let groups: GroupSchema[] = [];
@@ -67,5 +67,9 @@
         display: flex;
         flex-direction: column;
         width: 500px;
+    }
+    form {
+        width: 40%;
+        padding: 10px;
     }
 </style>

@@ -51,6 +51,11 @@
             background-position: 100% 0;
         }
     }
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
     div {
         position: relative;
         display: flex;
@@ -59,8 +64,6 @@
         max-width: 400px;
         margin: 0 auto;
         border-radius: 2px;
-        padding: 1.4rem 2rem 1.6rem;
-        background: rgba(57, 63, 84, 0.8);
         &:after {
             content: "";
             position: absolute;
@@ -88,12 +91,8 @@
 
     input {
         flex-grow: 1;
-        color: BFD2FF;
         font-size: 1.8rem;
         line-height: 2.4rem;
         vertical-align: middle;
-        &::-webkit-input-placeholder {
-            color: #7881a1;
-        }
     }
 </style>

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { options } from './../../../../.svelte-kit/generated/server/internal.js';
 	import type{ SelectFormFieldSchema } from './../processors/selection.processor';
     export let data: SelectFormFieldSchema;
     let opciones = data.field_validations?.options ?? []

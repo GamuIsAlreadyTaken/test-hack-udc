@@ -1,4 +1,5 @@
 <script lang="ts">
+<<<<<<< HEAD
     import type { TextFormFieldSchema } from '$lib/inputs/processors/text.processor';
 	import Text from './../lib/inputs/components/text.svelte';
 	
@@ -28,8 +29,12 @@
 	}
 
 
+=======
+>>>>>>> ffc2bcd810ed9babb495960aec322446d730b53d
 </script>
+
 <h1>Reto de disashop</h1>
 
-<Text {data}></Text>
-
+<a href="/iker">Tests de Iker</a>
+<a href="/jose">Tests de Jose</a>
+<a href="/victor">Tests de Victor</a>

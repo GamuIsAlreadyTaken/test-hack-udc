@@ -15,6 +15,7 @@
 		field_name: "",
 
 		field_readonly:false,
+		field_readonly:false,
 		
 		field_default_value:"hola"
 	}

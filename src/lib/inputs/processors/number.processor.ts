@@ -10,7 +10,3 @@ export type NumberFormFieldSchema = GenericFormFieldSchema &
     MaxValue |
     MinValue & MaxValue
 }
-
-export function parse(schema: NumberFormFieldSchema) {
-    return // TODO, devolver el componente de checkbox con las configuraciones
-}

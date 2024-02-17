@@ -10,7 +10,3 @@ export type TextFormFieldSchema = GenericFormFieldSchema &
     MaxLength |
     MinLength & MaxLength
 }
-
-export function parse(schema: TextFormFieldSchema) {
-    return // TODO, devolver el componente de checkbox con las configuraciones
-}

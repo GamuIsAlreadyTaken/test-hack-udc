@@ -9,7 +9,3 @@ export type SelectFormFieldSchema = GenericFormFieldSchema &
     Options |
     AllowMultipleOptions & Options
 }
-
-export function parse(schema: SelectFormFieldSchema) {
-    return // TODO, devolver el componente de checkbox con las configuraciones
-}

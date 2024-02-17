@@ -1,13 +1,23 @@
 <script lang="ts">
-	import type { CheckboxFormFieldSchema } from './../processors/checkbox.processor';
-    export let data: CheckboxFormFieldSchema;
+	import type { MaxValue } from './../../form-validations';
+    import type { MinValue } from "$lib/form-validations";
+    import type { NumberFormFieldSchema } from "../processors/number.processor";
 
+    export let data: NumberFormFieldSchema;
+
+    let min = (data.field_validations as MinValue).min_value
+    let max = (data.field_validations as MaxValue).max_value
+
+    
 </script>
 
+
+
+
 {#if data.field_readonly}
-<input class="numero" type="number" readonly>
+<input class="numero" type="number"  bind:value={data.field_default_value}  min={min} max={max} readonly>
 {:else}
-<input class="numero" type="number">
+<input class="numero" type="number"  bind:value={data.field_default_value}  min={min} max={max}>
 {/if}
 
 <label>{data.field_description}</label>     

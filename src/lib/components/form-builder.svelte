@@ -72,7 +72,10 @@
         width: 100%;
     }
     form {
+        position: absolute;
+        right: 30%;
         width: 40%;
         padding: 10px;
+    
     }
 </style>

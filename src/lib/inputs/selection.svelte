@@ -21,7 +21,8 @@
 
 <label for={data.field_name}>
     {data.field_description}
-    <select
+</label>
+<select
         class="select"
         name={data.field_id}
         bind:value={$value}
@@ -32,15 +33,23 @@
             <option value={opt}>{opt}</option>
         {/each}
     </select>
-</label>
 
 <style>
-    label{
-        align-items: center;
-        justify-content: center;
-        height: 10vh;
-        flex-direction: column;
-        margin-bottom: 5px;
-        display: flex;
+   label{
+      display: flex;
+      align-items: left;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 5px;
+    }
+    select {
+      text-align: left;
+      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1rem;
+      vertical-align: center;
+      background-color: rgba(57, 63, 84, 0.8);
+      margin-top: 2px;
+      margin-bottom: 10px;
     }
 </style>

@@ -34,9 +34,8 @@
         type="text"
         bind:value={data.field_default_value}
         {minlength}
-        {maxlength}    
-        readonly
+        {maxlength}
+        {pattern}
+        readonly={data.field_readonly}
     />
 </label>
-
-

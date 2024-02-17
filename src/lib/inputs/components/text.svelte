@@ -19,6 +19,10 @@
 
 <script lang="ts">
     export let data: TextFormFieldSchema;
+
+    let minlength = (data.field_validations as MinLength).min_length;
+    let maxlength = (data.field_validations as MaxLength).max_length;
+    let pattern = (data.field_validations as Format).format;
 </script>
 
 <label>{data.field_description}<br /></label>
@@ -28,8 +32,17 @@
         class="textbox"
         type="text"
         bind:value={data.field_default_value}
+        {minlength}
+        {maxlength}    
         readonly
     />
 {:else}
-    <input class="textbox" type="text" bind:value={data.field_default_value} />
+    <input 
+    class="textbox" 
+    type="text" 
+    bind:value={data.field_default_value}
+    {minlength}
+    {maxlength}
+    {pattern}
+    />
 {/if}

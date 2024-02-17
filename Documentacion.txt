@@ -1,2 +1,3 @@
 Arreglar:
 
+    Puede existir un error en el date ya que no se ha comprobada el funcionamiento de su valor determinado

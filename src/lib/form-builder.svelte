@@ -26,9 +26,17 @@
     });
 </script>
 
+<style>
+    :global(body){
+        background-color: lightblue;
+        background-image: url("")
+    }
+</style>    
+
 {#each fields as data}
     {@const type = getFieldType(data)}
     <svelte:component this={processors[type]} {data}></svelte:component>
+    <p></p>
 {:else}
 <p>Loading...</p>
 {/each}

@@ -14,6 +14,7 @@
 </script>
 
 <label for={data.field_name}>
+    {data.field_description}
     <input
         class="fecha"
         name={data.field_id}
@@ -21,5 +22,4 @@
         bind:value={data.field_default_value}
         readonly={data.field_readonly}
     />
-    {data.field_description}
 </label>

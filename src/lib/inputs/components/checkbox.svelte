@@ -15,6 +15,7 @@
 
 
 <label for={data.field_name}>
+    {data.field_description}
     <input
     class="check"
     name={data.field_id}
@@ -22,7 +23,6 @@
     bind:checked={data.field_default_value}
     disabled={data.field_readonly}
 />
-    {data.field_description}
 </label>
 
 

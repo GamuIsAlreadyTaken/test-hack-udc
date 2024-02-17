@@ -19,6 +19,7 @@
 
 
 <label for={data.field_name}>
+    {data.field_description}
     <input
     class="numero"
     name={data.field_id}
@@ -28,5 +29,4 @@
     {max}
     readonly={data.field_readonly}
 />
-    {data.field_description}
 </label>

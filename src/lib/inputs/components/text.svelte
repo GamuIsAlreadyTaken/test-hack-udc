@@ -5,7 +5,8 @@
 </script>
 
 
-<label>{data.field_description}</label>
+<label>{data.field_description}<br></label>
+
 {#if data.field_readonly}
 <input class="textbox" type="text" bind:value={data.field_default_value} readonly>
 {:else}

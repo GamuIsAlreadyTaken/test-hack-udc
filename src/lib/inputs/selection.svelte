@@ -33,3 +33,14 @@
         {/each}
     </select>
 </label>
+
+<style>
+    label{
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+        flex-direction: column;
+        margin-bottom: 5px;
+        display: flex;
+    }
+</style>

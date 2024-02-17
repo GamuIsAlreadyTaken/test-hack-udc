@@ -26,3 +26,13 @@
         disabled={data.field_readonly}
     />
 </label>
+
+<style>
+    label{
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+        margin-bottom: 5px;
+        display: flex;
+    }
+</style>

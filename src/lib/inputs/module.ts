@@ -73,3 +73,6 @@ export async function getFormTypeProcessedData(form_type_id: string) {
         getWritables(formSchema.form_fields ?? [])
     ] as const
 }
+
+export const add = (cur: number) => cur + 1
+export const sub = (cur: number) => cur - 1

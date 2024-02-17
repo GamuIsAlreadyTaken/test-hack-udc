@@ -6,6 +6,8 @@
         getFieldType,
         groupElements,
         orderBy,
+        add,
+        sub,
     } from "$lib/inputs/module";
     import type { Writable } from "svelte/store";
     import MaybeDependant from "$lib/components/maybe-dependant.svelte";
@@ -20,7 +22,7 @@
 
     export let readOnly: boolean = false;
     setContext("readOnly", readOnly);
-    let loading = getContext<Writable<boolean>>("loading");
+    let loading = getContext<Writable<number>>("loading");
 
     let groups: GroupSchema[] =
         schema.form_groups?.toSorted(orderBy("group_order")) ?? [];
@@ -31,9 +33,9 @@
         method="POST"
         action={route}
         use:enhance={() => {
-            loading.set(true);
+            loading.update(add);
             return async ({ result }) => {
-                loading.set(false);
+                loading.update(sub);
                 if (result.type === "redirect") {
                     goto(result.location);
                 } else {

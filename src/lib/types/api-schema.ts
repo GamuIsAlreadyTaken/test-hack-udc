@@ -54,3 +54,14 @@ export type ParsedFormData = {
     title_field: string,
     form_fields: FormValue[]
 }
+
+export type FormBrief = {
+    form_id: string;
+    title_field: string;
+    form_type_id: string;
+};
+
+export type FormTypeBrief = {
+    form_type_id: string;
+    form_type_name: string;
+};

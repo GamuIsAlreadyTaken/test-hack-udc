@@ -1,18 +1,16 @@
 <script lang="ts" context="module">
     export type FormRequestEvent = { formRequest: { id: string } };
-    type FormTypeBrief = {
-        // move to api-schema
-        form_type_id: string;
-        form_type_name: string;
-    };
 </script>
 
 <script lang="ts">
-    import Chargeicon from "$lib/assets/chargeicon.svelte";
     import { apiUrl, formsTypes } from "$lib/env";
-    import { createEventDispatcher, onMount } from "svelte";
+    import { add, sub } from "$lib/inputs/module";
+    import type { FormTypeBrief } from "$lib/types/api-schema";
+    import { createEventDispatcher, getContext, onMount } from "svelte";
+    import type { Writable } from "svelte/store";
 
     let formTypes: FormTypeBrief[] = [];
+    let loading: Writable<number> = getContext("loading");
 
     onMount(async () => {
         let res = await fetch(apiUrl + formsTypes, {
@@ -20,8 +18,13 @@
             headers: { mock: "1" },
         });
         formTypes = await res.json();
+        loading.update(sub);
     });
     const dispatch = createEventDispatcher<FormRequestEvent>();
+    function handleClick(id: string) {
+        dispatch("formRequest", { id });
+        loading.update(add);
+    }
 </script>
 
 <h2>FormTypes disponibles:</h2>
@@ -29,13 +32,10 @@
     {#each formTypes as formType}
         <button
             class="accent-button"
-            on:click={() =>
-                dispatch("formRequest", { id: formType.form_type_id })}
+            on:click={() => handleClick(formType.form_type_id)}
         >
             {formType.form_type_name}
         </button>
-    {:else}
-        <Chargeicon />
     {/each}
 </div>
 

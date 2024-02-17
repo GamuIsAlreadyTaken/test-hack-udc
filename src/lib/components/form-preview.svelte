@@ -1,20 +1,16 @@
 <script lang="ts" context="module">
     export type FormRequestEvent = { formRequest: { id: string } };
-    type FormBrief = {
-        // move to api-schema
-        form_id: string;
-        title_field: string;
-        form_type_id: string;
-    };
 </script>
 
 <script lang="ts">
-    import Chargeicon from "$lib/assets/chargeicon.svelte";
     import { apiUrl, forms } from "$lib/env";
+    import { add, sub } from "$lib/inputs/module";
+    import type { FormBrief } from "$lib/types/api-schema";
     import { createEventDispatcher, getContext, onMount } from "svelte";
     import type { Writable } from "svelte/store";
 
     let formTypes: FormBrief[] = [];
+    let loading: Writable<number> = getContext("loading");
 
     onMount(async () => {
         let res = await fetch(apiUrl + forms, {
@@ -22,12 +18,14 @@
             headers: { mock: "1" },
         });
         formTypes = await res.json();
+        loading.update(sub);
     });
+
     const dispatch = createEventDispatcher<FormRequestEvent>();
+
     function handleClick(id: string) {
         dispatch("formRequest", { id });
-        let loading: Writable<boolean> = getContext("loading");
-        loading.set(true);
+        loading.update(add);
     }
 </script>
 
@@ -40,8 +38,6 @@
         >
             {formType.title_field}
         </button>
-    {:else}
-        <Chargeicon />
     {/each}
 </div>
 

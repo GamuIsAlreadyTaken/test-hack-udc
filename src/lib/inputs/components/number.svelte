@@ -15,9 +15,9 @@
 
 
 {#if data.field_readonly}
-<input class="numero" type="number"  bind:value={data.field_default_value}  min={min} max={max} readonly>
+<input class="numero" type="number"  bind:value={data.field_default_value}   {min} {max} readonly>
 {:else}
-<input class="numero" type="number"  bind:value={data.field_default_value}  min={min} max={max}>
+<input class="numero" type="number"  bind:value={data.field_default_value}  {min} {max}>
 {/if}
 
 <label>{data.field_description}</label>     

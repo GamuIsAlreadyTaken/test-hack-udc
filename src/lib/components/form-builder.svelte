@@ -60,6 +60,7 @@
     }
     form {
         padding: 10px;
+
     }
     input {
         width: 100%;

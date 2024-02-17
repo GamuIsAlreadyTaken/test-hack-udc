@@ -4,21 +4,27 @@
         GenericFormFieldSchema,
     } from "./types/api-schema";
 
-    import data from "./targets.json";
+    // import data from "./targets.json";
 
     import { processors, getFieldType } from "$lib/inputs/components/module";
     import { onMount } from "svelte";
+    import { writable } from "svelte/store";
+
+    export let form_id: number;
 
     const url =
         "https://0fcd2366-7de6-464f-b389-b9a5533ed9af.mock.pstmn.io/api/v1/formTypes";
-    let req: Promise<Response>;
-    onMount(() => {
-        req = fetch(url, { method: "GET" });
+    const form = writable<FormSchema>();
+    onMount(async () => {
+        const res = await fetch(url, {
+            method: "GET",
+            headers: { form_type_id: form_id + "" },
+        });
+        const formSchema: FormSchema = await res.json();
+        form.set(formSchema);
     });
 
-    async function getFormSchema(): FormSchema {}
-
-    const fields = data.form_fields as GenericFormFieldSchema[];
+    let fields: GenericFormFieldSchema[] = $form.form_fields;
 </script>
 
 {#each fields as data}

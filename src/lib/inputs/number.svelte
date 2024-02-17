@@ -20,7 +20,8 @@
 
 <label for={data.field_name}>
     {data.field_description}
-    <input
+</label>
+<input
         class="numero"
         name={data.field_id}
         type="number"
@@ -30,15 +31,24 @@
         required={data.field_required}
         readonly={data.field_readonly}
     />
-</label>
 
 <style>
     label{
-        align-items: center;
-        justify-content: center;
-        height: 10vh;
-        flex-direction: column;
-        margin-bottom: 5px;
-        display: flex;
+      display: flex;
+      align-items: left;
+      justify-content: center;
+      height: 2vh;
+      flex-direction: column;
+      margin-bottom: 5px;
+    }
+    input {
+      text-align: left;
+      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1rem;
+      vertical-align: center;
+      background-color: rgba(255, 255, 255, 0.556);
+      margin-top: 2px;
+      margin-bottom: 10px;
     }
 </style>

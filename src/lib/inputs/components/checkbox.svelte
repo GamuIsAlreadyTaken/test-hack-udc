@@ -13,19 +13,16 @@
     export let data: CheckboxFormFieldSchema;
 </script>
 
-{#if data.field_readonly}
-    <input
-        class="check"
-        type="checkbox"
-        bind:checked={data.field_default_value}
-        disabled
-    />
-{:else}
-    <input
-        class="check"
-        type="checkbox"
-        bind:checked={data.field_default_value}
-    />
-{/if}
 
-<label>{data.field_description}</label>
+<label for={data.field_name}>
+    <input
+    class="check"
+    name={data.field_id}
+    type="checkbox"
+    bind:checked={data.field_default_value}
+    disabled={data.field_readonly}
+/>
+    {data.field_description}
+</label>
+
+

@@ -13,6 +13,10 @@
 
 </script>
 
+<svelte:head>
+    <title>{schema.form_type_name}</title>
+</svelte:head>
+
 {#if parsedData}
     <FormHidrator data={parsedData} {values} />
 {/if}

@@ -11,6 +11,10 @@
     let groups = groupElements(data.form_fields ?? []);
 </script>
 
+<svelte:head>
+    <title>{schema.form_type_name}</title>
+</svelte:head>
+
 <FormBuilder {schema} {values} groupedFields={groups} route={"?/postForm"} />
 {#if form?.message}
     <p>Error al enviar los datos, {form.message}</p>

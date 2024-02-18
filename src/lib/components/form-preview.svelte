@@ -24,8 +24,8 @@
     const dispatch = createEventDispatcher<FormRequestEvent>();
 
     function handleClick(id: string) {
-        dispatch("formRequest", { id });
         loading.update(add);
+        window.open("/done/" + id, "newwindow", "width=400,height=300");
     }
 </script>
 

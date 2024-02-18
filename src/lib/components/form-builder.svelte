@@ -37,7 +37,7 @@
             return async ({ result }) => {
                 loading.update(sub);
                 if (result.type === "redirect") {
-                    goto(result.location);
+                    close();
                 } else {
                     await applyAction(result);
                 }

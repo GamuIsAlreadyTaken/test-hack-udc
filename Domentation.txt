@@ -1,0 +1,7 @@
+Este projecto se basa en la realización de un programa capaz de recger la información para la creación de un formulario,
+realizar dicho formulario graficamente y,una vez este sea rellenado recopilar,procesar y enviar dicha información.
+
+Para ello usamos una estructura que se basa en el desarrollo de componentes más pequeños,estos se encuentran en un 
+grupo mayor que puede tener tanto opcionales como obligaciones,este a su vez se encuentra en otro y,por último,una capa
+que se encarga de recibir y enviar la información que el resto hayan obtenido.
+
